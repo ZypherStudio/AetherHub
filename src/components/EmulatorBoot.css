@@ -1,0 +1,57 @@
+.emulator-boot-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.boot-terminal {
+  width: 100%;
+  max-width: 600px;
+  height: 80vh;
+  background: #0c0c0c;
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  padding: 8px 12px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #888;
+  border-bottom: 1px solid #333;
+}
+
+.terminal-body {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 13px;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.log-prefix {
+  color: #3b82f6; /* blue */
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

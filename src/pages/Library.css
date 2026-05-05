@@ -1,0 +1,88 @@
+.library-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.library-header h1 {
+  font-size: 24px;
+}
+
+.platform-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: var(--accent-color);
+  color: white;
+}
+
+.library-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.library-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 12px;
+}
+
+.lib-image {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  background-size: cover;
+  background-position: center;
+}
+
+.lib-info {
+  flex: 1;
+}
+
+.lib-info h3 {
+  font-size: 15px;
+  margin: 0 0 4px 0;
+}
+
+.lib-platform {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+.lib-action button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-play {
+  color: var(--success-color);
+  background: rgba(16, 185, 129, 0.1) !important;
+}
+
+.btn-download {
+  color: var(--text-secondary);
+}

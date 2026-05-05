@@ -1,0 +1,175 @@
+.gdp-container {
+  display: flex;
+  gap: 20px;
+  padding: 16px 0;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  animation: gdpSlideUp 0.3s ease;
+}
+
+@keyframes gdpSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gdp-left { flex-shrink: 0; }
+
+.gdp-cover {
+  width: 100px;
+  height: 140px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gdp-cover:not([style*="url("]) {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+.gdp-cover-title {
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  text-align: center;
+  padding: 8px;
+  font-weight: 600;
+}
+
+.gdp-right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gdp-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gdp-title {
+  margin: 0;
+  font-size: 18px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gdp-platform {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.gdp-platform.steam { background: #1b2838; color: #66c0f4; border: 1px solid #66c0f4; }
+.gdp-platform.epic { background: #333; color: #fff; border: 1px solid #fff; }
+.gdp-platform.gog { background: #3a1250; color: #c090e5; border: 1px solid #c090e5; }
+
+.gdp-compat-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gdp-compat-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.gdp-fps {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.gdp-playtime {
+  color: #888;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gdp-settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.gdp-setting {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.04);
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #66c0f4;
+}
+
+.gdp-setting div {
+  display: flex;
+  flex-direction: column;
+}
+
+.gdp-label {
+  font-size: 9px;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.gdp-value {
+  font-size: 12px;
+  color: #ddd;
+  font-weight: 600;
+}
+
+.gdp-actions {
+  margin-top: 4px;
+}
+
+.gdp-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.gdp-btn.launch {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.gdp-btn.launch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16,185,129,0.4);
+}
+
+.gdp-btn.install {
+  background: linear-gradient(135deg, #66c0f4, #4a90d9);
+  color: white;
+}
+
+.gdp-btn.install:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102,192,244,0.4);
+}

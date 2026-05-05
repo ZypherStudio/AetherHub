@@ -1,0 +1,45 @@
+.perf-hud {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: monospace;
+  font-size: 13px;
+  z-index: 15000; /* Above boot screen */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+  color: #a3e635; /* Retro green terminal vibe */
+}
+
+.perf-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.perf-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.perf-value {
+  font-weight: bold;
+  text-align: right;
+  min-width: 50px;
+}
+
+.perf-temp {
+  color: #fb923c;
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+.text-success {
+  color: #10b981;
+}

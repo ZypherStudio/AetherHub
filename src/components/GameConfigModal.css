@@ -1,0 +1,280 @@
+.console-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.console-modal-content {
+  width: 100%;
+  max-width: 900px;
+  height: 80vh;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.console-modal-sidebar {
+  width: 35%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.sidebar-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(20, 20, 20, 0.95));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+
+.sidebar-overlay h2 {
+  font-size: 28px;
+  margin: 0 0 24px 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,1);
+}
+
+.config-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.config-tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.config-tab.active {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border-left: 3px solid white;
+}
+
+.preview-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* KEYMAPPER UI */
+.keymapper-ui {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.keymapper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 12px;
+  font-weight: bold;
+}
+
+.keymapper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.keymapper-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.keymapper-item label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.key-bind-box {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 13px;
+  color: #66c0f4;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.key-bind-box:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.console-modal-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.close-btn {
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+.modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.form-group select:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-group option {
+  background: #1a1a1a;
+  color: white;
+}
+
+.row-toggle {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.toggle-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-info label {
+  color: white;
+  margin-bottom: 4px;
+}
+
+.toggle-info span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.console-btn {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.console-btn:active {
+  transform: scale(0.95);
+}
+
+.console-btn.primary {
+  background: white;
+  color: black;
+}
+
+.console-btn.primary .btn-console-icon {
+  background: black;
+  color: white;
+}
+
+.console-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
