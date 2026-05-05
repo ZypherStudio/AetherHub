@@ -3,7 +3,7 @@
 
 AetherHub, PC oyun kütüphanenizi (Steam, Epic Games, GOG) mobil cihazlara ve modern masaüstü sistemlere taşıyan, açık kaynaklı, yüksek performanslı bir kütüphane yöneticisi ve başlatıcıdır (launcher).
 
-![AetherHub Header](landing/logo.png)
+[![AetherHub Header](docs/logo.png)](https://ZypherStudio.github.io/AetherHub/)
 
 ## 🚀 Temel Özellikler
 
