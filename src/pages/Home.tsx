@@ -61,6 +61,14 @@ const Home = () => {
   const [systemStatus, setSystemStatus] = useState<any>(null);
   const [showConsole, setShowConsole] = useState(false);
 
+  // Re-added for Build Stability
+  const [showComponents, setShowComponents] = useState(false);
+  const [showHUD, setShowHUD] = useState(false);
+  const [hudMode, setHudMode] = useState<'normal' | 'detailed' | 'konkr'>('normal');
+  const [showCommunityConfigs, setShowCommunityConfigs] = useState(false);
+  const [showTaskManager, setShowTaskManager] = useState(false);
+  const [useSDCard, setUseSDCard] = useState(false);
+
   // Check system status (Wine, Box64, etc.)
   useEffect(() => {
     fetch('http://localhost:3001/api/system/status')
@@ -104,45 +112,32 @@ const Home = () => {
   }, []);
 
   // Download simulation loop
-  useEffect(() => {
-    if (downloads.length === 0) return;
-
+  const queueDownload = (game: any) => {
+    const dl = { id: Math.random().toString(), game, progress: 0, speed: 0 };
+    setDownloads((prev: any) => [...prev, dl]);
+    
     const interval = setInterval(() => {
-      setDownloads(prev => {
+      setDownloads((prev: any) => {
         let hasFinished = false;
-        const updated = prev.map(dl => {
-          if (dl.progress >= 100) return dl;
-          const newProgress = Math.min(100, dl.progress + (Math.random() * 5));
-          if (newProgress >= 100) hasFinished = true;
-          return {
-            ...dl,
-            progress: newProgress,
-            speed: 15 + Math.random() * 20
-          };
+        const updated = prev.map((d: any) => {
+          if (d.id === dl.id) {
+            const newProgress = Math.min(100, d.progress + Math.random() * 5);
+            if (newProgress >= 100) hasFinished = true;
+            return { ...d, progress: newProgress, speed: 15 + Math.random() * 20 };
+          }
+          return d;
         });
 
-        // If any finished, move them to games
         if (hasFinished) {
-          const finishedDls = updated.filter(dl => dl.progress >= 100);
-          const stillDownloading = updated.filter(dl => dl.progress < 100);
-          
-          finishedDls.forEach(dl => {
-            // Mark the game as installed in the library
-            setGames(prev => prev.map(g => g.id === dl.game.id ? { ...g, installed: true } : g));
-          });
-          
-          if (stillDownloading.length === 0) {
-            setTimeout(() => setShowDownloads(false), 3000);
-          }
-          return stillDownloading;
+          clearInterval(interval);
+          setGames((p: any) => p.map((g: any) => g.id === game.id ? { ...g, installed: true } : g));
+          return updated.filter((d: any) => d.progress < 100);
         }
-
         return updated;
       });
     }, 1000);
-
-    return () => clearInterval(interval);
-  }, [downloads.length]);
+    setShowDownloads(true);
+  };
 
   // Use current time
   const [time, setTime] = useState('');
@@ -161,7 +156,7 @@ const Home = () => {
     const scrollLeft = carouselRef.current.scrollLeft;
     const itemWidth = 200 + 16; // width + gap
     const index = Math.round(scrollLeft / itemWidth);
-    if (index !== selectedIndex && index >= 0 && index < games.length) {
+    if (index !== selectedIndex && index >= 0 && index < filteredGames.length) {
       setSelectedIndex(index);
     }
   };
@@ -205,24 +200,8 @@ const Home = () => {
 
   const handleGameAdded = (newGame: any) => {
     const gameWithInstall = { ...newGame, installed: false };
-    setGames(prev => [...prev, gameWithInstall]);
-    setActivePlatform('all'); // Reset filter to show new game
-    // Trigger download immediately for manually added ISOs/Arcs
+    setGames((prev: any) => [...prev, gameWithInstall]);
     queueDownload(gameWithInstall);
-    
-    // Scroll to the end
-    setTimeout(() => {
-      setSelectedIndex(games.length);
-      carouselRef.current?.scrollTo({ left: games.length * 216, behavior: 'smooth' });
-    }, 100);
-  };
-
-  const queueDownload = (game: any) => {
-    setDownloads(prev => [
-      ...prev,
-      { id: `dl-${Date.now()}`, game, progress: 0, speed: 0 }
-    ]);
-    setShowDownloads(true);
   };
 
   const filteredGames = games.filter(g => {
@@ -307,7 +286,7 @@ const Home = () => {
 
             <Gamepad2 size={18} color={controllerConnected ? '#10b981' : 'white'} />
             <span className="time-text">{time}</span>
-            <Wifi size={18} color={isOffline ? '#666' : 'white'} onClick={() => setIsOffline(!isOffline)} style={{cursor: 'pointer'}} title={isOffline ? 'Offline Mode' : 'Connected to Network'} />
+            <Wifi size={18} color={isOffline ? '#666' : 'white'} onClick={() => setIsOffline(!isOffline)} style={{cursor: 'pointer'}} />
             <div className="battery-indicator">
               {systemStatus && (
                 <div className="system-status-pills">

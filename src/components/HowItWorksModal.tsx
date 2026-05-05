@@ -256,6 +256,7 @@ const HowItWorksModal = ({ onClose }: HowItWorksModalProps) => {
                 </div>
               </div>
             </div>
+          )}
           {activeTab === 'mobile' && (
             <div className="mobile-setup-view">
               <div className="setup-step">
